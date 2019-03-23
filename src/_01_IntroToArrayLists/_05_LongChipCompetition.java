@@ -13,9 +13,79 @@ public class _05_LongChipCompetition {
 	 * initialize The Beatles before you start your search. *
 	 **/
 	private ArrayList<Beatle> theBeatles = new ArrayList<Beatle>();
+	static _05_LongChipCompetition lcc;
+	static Chip longestChipGeorge;
+	static Chip longestChipJohn;
+	static Chip longestChipPaul;
+	static Chip longestChipRingo;
 
 	public static void main(String[] args) {
-		_05_LongChipCompetition lcc = new _05_LongChipCompetition();
+		lcc = new _05_LongChipCompetition();
+		lcc.initializeBeatles();
+		checkForLongestChip();
+
+	}
+
+	public static void checkForLongestChip() {
+		for (int i = 0; i < lcc.theBeatles.get(0).getChips().size(); i++) {
+			if (lcc.theBeatles.get(0).getChips().get(i).getLength() > lcc.theBeatles.get(0).getChips().get(i + 1).getLength()) {
+				longestChipGeorge = lcc.theBeatles.get(0).getChips().get(i);
+			} else {
+				longestChipGeorge = lcc.theBeatles.get(0).getChips().get(i);
+			}
+		}
+		for (int i = 1; i < lcc.theBeatles.get(1).getChips().size(); i++) {
+			if (lcc.theBeatles.get(1).getChips().get(i).getLength() > lcc.theBeatles.get(1).getChips().get(i + 1).getLength()) {
+				longestChipJohn = lcc.theBeatles.get(1).getChips().get(i);
+			} else {
+				longestChipJohn = lcc.theBeatles.get(1).getChips().get(i);
+			}
+		}
+		for (int i = 0; i < lcc.theBeatles.get(2).getChips().size(); i++) {
+			if (lcc.theBeatles.get(2).getChips().get(i).getLength() > lcc.theBeatles.get(2).getChips().get(i + 1).getLength()) {
+				longestChipPaul = lcc.theBeatles.get(2).getChips().get(i);
+			} else {
+				longestChipPaul = lcc.theBeatles.get(2).getChips().get(i);
+			}
+		}
+		for (int i = 0; i < lcc.theBeatles.get(3).getChips().size(); i++) {
+			if (lcc.theBeatles.get(3).getChips().get(i).getLength() > lcc.theBeatles.get(3).getChips().get(i + 1).getLength()) {
+				longestChipRingo = lcc.theBeatles.get(3).getChips().get(i);
+			} else {
+				longestChipRingo = lcc.theBeatles.get(3).getChips().get(i);
+			}
+		}
+		Chip owner;
+		if(longestChipGeorge.getLength() > longestChipJohn.getLength()) {
+			owner = longestChipGeorge;
+			}
+		else {
+			owner = longestChipJohn;
+		}
+		if(owner.getLength() > longestChipPaul.getLength()) {
+		}
+		else {
+			owner = longestChipPaul;
+		}
+		if(owner.getLength() > longestChipRingo.getLength()) {
+			
+		}
+		else {
+			owner = longestChipRingo;
+		}
+	
+		if(owner == longestChipGeorge) {
+			System.out.println(lcc.theBeatles.get(0).getName());	
+		}
+		if(owner == longestChipJohn) {
+			System.out.println(lcc.theBeatles.get(1).getName());	
+		}
+		if(owner == longestChipPaul) {
+			System.out.println(lcc.theBeatles.get(2).getName());	
+		}
+		if(owner == longestChipRingo) {
+			System.out.println(lcc.theBeatles.get(3).getName());	
+		}
 		
 	}
 	
@@ -29,8 +99,8 @@ public class _05_LongChipCompetition {
 		theBeatles.add(paul);
 		theBeatles.add(ringo);
 	}
-	
-	public ArrayList<Beatle> getTheBand(){
+
+	public ArrayList<Beatle> getTheBand() {
 		return theBeatles;
 	}
 }
