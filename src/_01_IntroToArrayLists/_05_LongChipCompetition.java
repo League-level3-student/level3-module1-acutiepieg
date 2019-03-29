@@ -14,10 +14,10 @@ public class _05_LongChipCompetition {
 	 **/
 	private ArrayList<Beatle> theBeatles = new ArrayList<Beatle>();
 	static _05_LongChipCompetition lcc;
-	static Chip longestChipGeorge;
-	static Chip longestChipJohn;
-	static Chip longestChipPaul;
-	static Chip longestChipRingo;
+	static Chip longestChipGeorge = new Chip(0.0);
+	static Chip longestChipJohn = new Chip(0.0);
+	static Chip longestChipPaul = new Chip(0.0);
+	static Chip longestChipRingo = new Chip(0.0);
 
 	public static void main(String[] args) {
 		lcc = new _05_LongChipCompetition();
@@ -28,32 +28,24 @@ public class _05_LongChipCompetition {
 
 	public static void checkForLongestChip() {
 		for (int i = 0; i < lcc.theBeatles.get(0).getChips().size(); i++) {
-			if (lcc.theBeatles.get(0).getChips().get(i).getLength() > lcc.theBeatles.get(0).getChips().get(i + 1).getLength()) {
+			if (lcc.theBeatles.get(0).getChips().get(i).getLength() > longestChipGeorge.getLength()) {
 				longestChipGeorge = lcc.theBeatles.get(0).getChips().get(i);
-			} else {
-				longestChipGeorge = lcc.theBeatles.get(0).getChips().get(i);
-			}
+			} 
 		}
-		for (int i = 1; i < lcc.theBeatles.get(1).getChips().size(); i++) {
-			if (lcc.theBeatles.get(1).getChips().get(i).getLength() > lcc.theBeatles.get(1).getChips().get(i + 1).getLength()) {
+		for (int i = 0; i < lcc.theBeatles.get(1).getChips().size(); i++) {
+			if (lcc.theBeatles.get(1).getChips().get(i).getLength() > longestChipJohn.getLength()) {
 				longestChipJohn = lcc.theBeatles.get(1).getChips().get(i);
-			} else {
-				longestChipJohn = lcc.theBeatles.get(1).getChips().get(i);
-			}
+			} 
 		}
 		for (int i = 0; i < lcc.theBeatles.get(2).getChips().size(); i++) {
-			if (lcc.theBeatles.get(2).getChips().get(i).getLength() > lcc.theBeatles.get(2).getChips().get(i + 1).getLength()) {
+			if (lcc.theBeatles.get(2).getChips().get(i).getLength() > longestChipPaul.getLength()) {
 				longestChipPaul = lcc.theBeatles.get(2).getChips().get(i);
-			} else {
-				longestChipPaul = lcc.theBeatles.get(2).getChips().get(i);
-			}
+			} 
 		}
 		for (int i = 0; i < lcc.theBeatles.get(3).getChips().size(); i++) {
-			if (lcc.theBeatles.get(3).getChips().get(i).getLength() > lcc.theBeatles.get(3).getChips().get(i + 1).getLength()) {
+			if (lcc.theBeatles.get(3).getChips().get(i).getLength() > longestChipRingo.getLength()) {
 				longestChipRingo = lcc.theBeatles.get(3).getChips().get(i);
-			} else {
-				longestChipRingo = lcc.theBeatles.get(3).getChips().get(i);
-			}
+			} 
 		}
 		Chip owner;
 		if(longestChipGeorge.getLength() > longestChipJohn.getLength()) {
