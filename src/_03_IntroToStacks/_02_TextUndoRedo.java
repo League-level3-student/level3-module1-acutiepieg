@@ -45,7 +45,11 @@ public class _02_TextUndoRedo implements KeyListener {
 
 	public void addChar() {
 		label.setText(wordTyped);
-		frame.pack();
+		if(wordTyped.length() >= 12) {
+			frame.pack();
+		}
+		panel.repaint();
+		panel.revalidate();
 
 	}
 
