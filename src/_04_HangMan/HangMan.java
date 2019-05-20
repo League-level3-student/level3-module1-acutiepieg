@@ -58,28 +58,40 @@ public class HangMan implements KeyListener {
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		char character = e.getKeyChar();
+		boolean match = false;
+		
+		if (lives <= 1) {
+			lives = lives - 1;
+			label.setText(wordShown + " Lives: " + lives);
+
+			JOptionPane.showMessageDialog(null, "You have no lives left");
+			System.exit(0);
+			
+		} 
 		for (int i = 0; i < hangManWord.length(); i++) {
 			if (hangManWord.charAt(i) == character) {
 				wordShown = wordShown.substring(0, i) + character + wordShown.substring(i + 1, wordShown.length());
 				label.setText(wordShown + " Lives: " + lives);
-			} else {
-				lives = lives - 1;
-			}
+				match = true;
+			} 
+		}
+		
+		if(match == false) {
+			lives = lives - 1;
+			label.setText(wordShown + " Lives: " + lives);
 		}
 
-		if (wordShown.contains("_") == false) {
-			words.pop();
-			if (words.size() == 0) {
-				JOptionPane.showMessageDialog(null, "You have no more words left");
-			}
-			if (lives == 0) {
-				JOptionPane.showMessageDialog(null, "You have no lives left");
-			} else {
-				label.setText("");
-				lives = 10;
-				addWord();
-			}
+	if(wordShown.contains("_")==false){
+		words.pop();
+		if (words.size() == 0) {
+			JOptionPane.showMessageDialog(null, "You have no more words left");
+			System.exit(0);
+		} else {
+			label.setText("");
+			lives = 10;
+			addWord();
 		}
+	}
 	}
 
 	@Override
