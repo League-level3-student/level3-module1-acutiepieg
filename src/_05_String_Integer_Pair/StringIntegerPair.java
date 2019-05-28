@@ -20,11 +20,11 @@ public class StringIntegerPair {
 		// the passed in String, set the value at that location to the
 		// passed in value and return from the method.
 		for (int i = 0; i < keys.length; i++) {
-			if (keys[i].contentEquals(key)) {
+			if (keys[i].equals(key)) {
 				values[i] = value;
+				return;
 			}
 		}
-
 		// B. create a String array that is one element longer than the keys
 		String[] strings = new String[keys.length + 1];
 
@@ -53,14 +53,19 @@ public class StringIntegerPair {
 	// If the key does not exist, return Integer.MIN_VALUE.
 	public int get(String key) {
 		int value = 0;
+		boolean end = false;
 		for (int i = 0; i < keys.length; i++) {
-			if (keys[i].contentEquals(key)) {
+			if (keys[i].equals(key)) {
 				value = i;
-			} else {
-				return Integer.MIN_VALUE;
+				end = true;
 			}
 		}
-		return values[value];
+		if(end == false) {
+			return Integer.MIN_VALUE;
+		}
+		else{
+			return values[value];
+		}
 	}
 
 	// 6. Complete the containsKey method so that it returns true if the
@@ -87,11 +92,11 @@ public class StringIntegerPair {
 
 	// 8. Complete the getKeysMethod so it returns the keys as an array
 	public String[] getKeys() {
-		return null;
+		return keys;
 	}
 
 	// 9. Complete the getValues so it returns the values as an array
 	public int[] getValues() {
-		return null;
+		return values;
 	}
 }
