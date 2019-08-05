@@ -22,7 +22,7 @@ public class _01_IntroToHashMaps {
 		// The square Root of 2 is 1.4142135623730951
 		// The square Root of 3 is 1.7320508075688772
 	for(int i = 0; i < roots.size(); i++) {
-		System.out.println("The square root of " + roots.get(i) + "is " + roots.get(i)) ;
+		System.out.println("The square root of " + i + " is " +   roots.get(i)) ;
 	}
 	
 	}
