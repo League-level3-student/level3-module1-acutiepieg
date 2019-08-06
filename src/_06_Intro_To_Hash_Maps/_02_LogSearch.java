@@ -44,7 +44,8 @@ public class _02_LogSearch implements ActionListener {
 	JButton add;
 	JButton search;
 	JButton view;
-	ArrayList<Integer> listOfID;
+	JButton remove;
+	ArrayList<Integer> listOfID = new ArrayList<Integer>();
 	
 	public _02_LogSearch() {
 		JFrame frame = new JFrame();
@@ -55,15 +56,17 @@ public class _02_LogSearch implements ActionListener {
 		add = new JButton("Add Entry");
 		search = new JButton("Search by ID");
 		view = new JButton("View List");
-		
+		remove = new JButton("Remove");
 		
 		add.addActionListener(this);
 		search.addActionListener(this);
 		view.addActionListener(this);
+		remove.addActionListener(this);
 		
 		panel.add(add);
 		panel.add(search);
 		panel.add(view);
+		panel.add(remove);
 		frame.pack();
 	}
 	
@@ -76,7 +79,8 @@ public class _02_LogSearch implements ActionListener {
 		String name = JOptionPane.showInputDialog("Enter your name");
 		int id = Integer.parseInt(num);
 		map.put(id, name);
-		listOfID = (ArrayList<Integer>) map.keySet();
+		listOfID.add(id);
+
 	}
 	
 	public void searchByID() {
@@ -91,13 +95,31 @@ public class _02_LogSearch implements ActionListener {
 	}
 	
 	public void viewList() {
-		String list = null;
+		if(map.isEmpty() == true) {
+			JOptionPane.showMessageDialog(null, "There are no entries to view");
+		}
+		
+		else {
+		String list = "";
 		for(int i = 0; i < map.size(); i ++) {
-			list = list + "/n" + "ID: " + listOfID.get(i) + "  Name: " + map.get(listOfID.get(i)) ;
+			list = list + "\nID: " + listOfID.get(i) + " Name: " + map.get(listOfID.get(i)) ;
 		}
 		JOptionPane.showMessageDialog(null, list);
+		}
 	}
 
+	public void remove() {
+		String id = JOptionPane.showInputDialog("Enter your ID");
+		int newid = Integer.parseInt(id);
+		if(map.containsKey(newid) == true) {
+			map.remove(newid);
+			JOptionPane.showMessageDialog(null, "Your entry has been removed");
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "Your entry does not exist");
+		}
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -112,6 +134,11 @@ public class _02_LogSearch implements ActionListener {
 		else if(e.getSource()== view) {
 			viewList();
 		}
+		
+		else if(e.getSource() == remove) {
+			remove();
+		}
+		
 	}
 	
 	
